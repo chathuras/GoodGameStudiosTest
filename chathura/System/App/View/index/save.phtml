@@ -1,0 +1,10 @@
+<?php
+
+    include 'commentForm.phtml';
+
+    if (!empty($result->success)) {
+
+        $comment = $result->comment;
+        include 'comment.phtml';
+    }
+?>

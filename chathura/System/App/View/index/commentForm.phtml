@@ -1,0 +1,23 @@
+<form id="iFormComment" action="" method="">
+    <?php
+
+        if (!empty($result->success) && $result->success === false) {
+            echo '<p class="cPError">DB ERROR</p><br />';
+        }
+
+        if (!empty($result->errors)) {
+            $errors = $result->errors;
+
+            foreach ($errors as $error) {
+                echo '<p class="cPError">* ' . $error . '</p>';
+            }
+
+            $comment = $result->comment;
+        }
+
+    ?>
+    <p><label>Name: </label><input type="text" name="name" value="<?php echo (isset($comment->name)) ? $comment->name : ''; ?>" /></p>
+    <p><label>Email: </label><input type="text" name="email" value="<?php echo (isset($comment->email)) ? $comment->email : ''; ?>" /></p>
+    <p><label>Comment: </label><textarea name="message" ><?php echo (isset($comment->message)) ? $comment->message : ''; ?></textarea></p>
+    <p><span>&nbsp;</span><input type="button" value="submit"/></p>
+</form>
